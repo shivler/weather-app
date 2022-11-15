@@ -1,0 +1,49 @@
+.container {
+  text-align: center;
+  padding-top: 10px;
+}
+
+form {
+  min-width: 1200px;
+}
+
+.col-auto {
+  margin-left: 24px;
+  padding-bottom: 30px;
+}
+
+.form-control-lg {
+  border: 2px solid;
+}
+
+.btn {
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.btn-primary {
+  margin-left: 0;
+}
+
+.btn-success {
+  margin-right: 40px;
+}
+
+h1 {
+  padding-bottom: 20px;
+  color: #6c757d;
+}
+
+h3 {
+  padding-bottom: 10px;
+}
+
+.table {
+  font-size: 20px;
+  color: #6c757d;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.emoji {
+  font-size: 60px;
+}
