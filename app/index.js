@@ -56,8 +56,7 @@ let day = days[today.getDay()];
 let dayTime = document.querySelector("#date");
 dayTime.innerHTML = `${day} ${hour}:${minute}`;
 
-function cityName(event) {
-  event.preventDefault();
+function cityName(city) {
   let inputCity = document.querySelector("#city-input");
   city.innerHTML = `${inputCity.value}`;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
@@ -82,9 +81,10 @@ function locationTemp(response) {
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = `${response.data.name}`;
   inputLocation.innerHTML = `${temperature}`;
+  celsiusTemperature = response.data.main.temp;
 }
 
-function currentLocationBtn(response) {
+function currentLocationBtn() {
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
 
@@ -93,14 +93,27 @@ userLocation.addEventListener("click", currentLocationBtn);
 
 function celsiusUnit(event) {
   event.preventDefault();
-  temperature.innerHTML = `⛅ 17`;
+  let celsiusElement = document.querySelector("#temperature");
+  celsiusElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 function fahrenheitUnit(event) {
   event.preventDefault();
-  temperature.innerHTML = `⛅ 63`;
+  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
+  let fahrenheitElement = document.querySelector("#temperature");
+  fahrenheitElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-let celsiusTemperature = document.querySelector("#celsius-link");
-let fahrenheitTemperature = document.querySelector("#fahrenheit-link");
-celsiusTemperature.addEventListener("click", celsiusUnit);
-fahrenheitTemperature.addEventListener("click", fahrenheitUnit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+celsiusLink.addEventListener("click", celsiusUnit);
+fahrenheitLink.addEventListener("click", fahrenheitUnit);
+let celsiusTemperature = null;
+
+function loadData(city) {
+  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(locationTemp);
+}
+
+loadData("London");
