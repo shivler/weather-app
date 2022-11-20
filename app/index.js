@@ -39,9 +39,13 @@ if (weather[city]) {
   );
 }
 */
+
 let today = new Date();
 let hour = today.getHours();
 let minute = today.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
 
 let days = [
   "Sunday",
@@ -64,7 +68,7 @@ function cityName(city) {
   city.innerHTML = `${inputCity.value}`;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.innerHTML}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(locationTemp);
+  axios.get(apiUrl).then(locationStats);
 }
 
 let cityForm = document.querySelector("#citySearch");
@@ -77,16 +81,26 @@ function currentLocation(position) {
   let latitude = position.coords.latitude;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(locationTemp);
+  axios.get(apiUrl).then(locationStats);
 }
 
-function locationTemp(response) {
+function locationStats(response) {
   let temperature = Math.round(response.data.main.temp);
   let inputLocation = document.querySelector("#temperature");
   let currentCity = document.querySelector("#city");
+  let windSpeedRound = Math.round(response.data.wind.speed * 3.6);
+  let windSpeed = document.querySelector("#speed");
+  let weatherDescription = document.querySelector("#description");
+  let iconElement = document.querySelector("#icon");
   currentCity.innerHTML = `${response.data.name}`;
   inputLocation.innerHTML = `${temperature}`;
-  celsiusTemperature = response.data.main.temp;
+  windSpeed.innerHTML = `Wind: ${windSpeedRound} km/h`;
+  weatherDescription.innerHTML = `${response.data.weather[0].description}`;
+  celsiusTemperature = `${response.data.main.temp}`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function currentLocationBtn(event) {
@@ -123,7 +137,7 @@ let celsiusTemperature = null;
 function loadData(city) {
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(locationTemp);
+  axios.get(apiUrl).then(locationStats);
 }
 
 loadData("London");

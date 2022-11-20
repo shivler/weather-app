@@ -35,20 +35,27 @@
             <div class="col">
           <input type="submit" class="btn btn-success w-100" id="current" value="Current"></button>
             </div>
+            </div>
             <h1>
-                <div class="row">
-                  <div class="col" id="city">            
+              <div class="container">
+            <div class="row">
+                  <div class="col" id="city">
                   </div>
-                  <div class="col">
-                    <span id="temperature"></span>
+                  <div class="col" id="icon">
+                  <img src="http://openweathermap.org/img/wn/01d@2x.png">
+                  <span id="temperature"></span>
                     <span id="units">
                   <a href="#" id="celsius-link" class="active">°C</a> |
                   <a href="#" id="fahrenheit-link">°F</a>
                     </span>
                   </div>
-                  <div class="col" id="date">
-                   Today
+                    <div class="col" id="date">
                   </div>
+          </div> 
+                    <ul>
+                  <li class="col-auto" id="speed"></li>
+                  <li class="col-auto" id="description"></li>
+                  </ul>
                 </div>
               </h1>
               <h3>
@@ -82,7 +89,6 @@
                 </table>
       </div>
       </div>
-        </div>
       </div>
       <div class="footer"><a href="https://github.com/shivler/weather-app" target="_blank">Open-source code</a>, by Siobhán Johnson</div>
     </div>

@@ -13,7 +13,7 @@ form {
 
 .col-auto {
   margin-left: 24px;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
 }
 
 .form-control-lg {
@@ -34,12 +34,32 @@ form {
 }
 
 h1 {
-  padding-bottom: 20px;
   color: #6c757d;
 }
 
 h3 {
   padding-bottom: 10px;
+}
+
+#speed {
+  list-style: none;
+  font-size: large;
+  text-align: left;
+  margin-top: -36px;
+  margin-left: -10px;
+  padding: 0;
+}
+
+#description {
+  list-style: none;
+  font-size: large;
+  text-align: left;
+  margin-left: -10px;
+  padding-top: 10px;
+}
+
+#description::first-letter {
+  text-transform: capitalize;
 }
 
 #units {
