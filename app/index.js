@@ -57,6 +57,7 @@ let dayTime = document.querySelector("#date");
 dayTime.innerHTML = `${day} ${hour}:${minute}`;
 
 function cityName(city) {
+  city.preventDefault();
   let inputCity = document.querySelector("#city-input");
   city.innerHTML = `${inputCity.value}`;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
@@ -84,7 +85,8 @@ function locationTemp(response) {
   celsiusTemperature = response.data.main.temp;
 }
 
-function currentLocationBtn() {
+function currentLocationBtn(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
 
