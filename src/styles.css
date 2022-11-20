@@ -1,3 +1,7 @@
+body {
+  cursor: default;
+}
+
 .container {
   text-align: center;
   padding-top: 10px;
@@ -47,6 +51,7 @@ h3 {
 .active {
   color: #6c757d;
   text-decoration: none;
+  cursor: default;
 }
 
 .table {
