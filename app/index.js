@@ -58,6 +58,8 @@ dayTime.innerHTML = `${day} ${hour}:${minute}`;
 
 function cityName(city) {
   city.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let inputCity = document.querySelector("#city-input");
   city.innerHTML = `${inputCity.value}`;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
@@ -69,6 +71,8 @@ let cityForm = document.querySelector("#citySearch");
 cityForm.addEventListener("submit", cityName);
 
 function currentLocation(position) {
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let longitude = position.coords.longitude;
   let latitude = position.coords.latitude;
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
