@@ -48,7 +48,20 @@ h3 {
   top: -18px;
 }
 
+#fahrenheit-link {
+  text-decoration: none;
+}
+#celsius-link {
+  text-decoration: none;
+}
+
 .active {
+  color: #6c757d;
+  text-decoration: none;
+  cursor: default;
+}
+
+.active:hover {
   color: #6c757d;
   text-decoration: none;
   cursor: default;

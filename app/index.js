@@ -95,6 +95,8 @@ userLocation.addEventListener("click", currentLocationBtn);
 
 function celsiusUnit(event) {
   event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   let celsiusElement = document.querySelector("#temperature");
   celsiusElement.innerHTML = Math.round(celsiusTemperature);
 }
@@ -102,6 +104,8 @@ function celsiusUnit(event) {
 function fahrenheitUnit(event) {
   event.preventDefault();
   let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitElement = document.querySelector("#temperature");
   fahrenheitElement.innerHTML = Math.round(fahrenheitTemperature);
 }
