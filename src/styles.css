@@ -38,14 +38,15 @@ h3 {
   padding-bottom: 10px;
 }
 
-span#units {
-  font-size: 10px;
-  text-decoration: none;
+#units {
+  font-size: medium;
+  position: relative;
+  top: -18px;
 }
 
 .active {
-  color: rgba(0, 0, 0, 0);
-  cursor: default;
+  color: #6c757d;
+  text-decoration: none;
 }
 
 .table {
@@ -56,4 +57,8 @@ span#units {
 
 .emoji {
   font-size: 60px;
+}
+
+.footer {
+  text-align: start;
 }
