@@ -62,37 +62,41 @@
               <h3>
                     Upcoming forecast
               </h3>
-              <div>
+              
               <table class="table">
+                <tbody>
                     <tr>
-                      <td>Tomorrow</td>
-                      <td>Wed</td>
-                      <td>Thu</td>
-                      <td>Fri</td>
-                      <td>Sat</td>
+                      <td colspan="2" id="tomorrowTitle">Tomorrow</td>
+                      <td colspan="2" id="twoDayTitle">Wed</td>
+                      <td colspan="2" id="threeDayTitle">Thu</td>
+                      <td colspan="2" id="fourDayTitle">Fri</td>
+                      <td colspan="2" id="fiveDayTitle">Sat</td>
                     </tr>
-                  <tbody>
                     <tr class="emoji">
-                      <td>☀️</td>
-                      <td>⛈️</td>
-                      <td>🌨️</td>
-                      <td>☁️</td>
-                      <td>🌦️</td>
+                      <td colspan="2"><img id="tomorrowImage" src=""></td>
+                      <td colspan="2"><img id="twoDayImage" src=""></td>
+                      <td colspan="2"><img id="threeDayImage" src=""></td>
+                      <td colspan="2"><img id="fourDayImage" src=""></td>
+                      <td colspan="2"><img id="fiveDayImage" src=""></td>
                     </tr>
                     <tr>
-                      <td class="max">10° <span class="min">5°</span></td>
-                      <td class="max">3° <span class="min">0°</span></td>
-                      <td class="max">-2° <span class="min">-5°</span></td>
-                      <td class="max">7° <span class="min">5°</span></td>
-                      <td class="max">12° <span class="min">10°</span></td>
+                      <td class="max" id="dayOneMax"></td>
+                       <td class="min" id="dayOneMin"></td>
+                      <td class="max" id="dayTwoMax"></td>
+                        <td class="min" id="dayTwoMin"></td>
+                      <td class="max" id="dayThreeMax"></td>
+                        <td class="min" id="dayThreeMin"></td>
+                      <td class="max" id="dayFourMax"></td>
+                        <td class="min" id="dayFourMin"></td>
+                      <td class="max" id="dayFiveMax"></td>
+                        <td class="min" id="dayFiveMin"></td>
                     </tr>
                   </tbody>
                 </table>
+    
       </div>
-      </div>
-    <div class="footer"><a href="https://github.com/shivler/weather-app" target="_blank">Open-source code</a>, by Siobhán Johnson</div>  
-    </div>
-    </div>
+    <div class="footer"><a href="https://github.com/shivler/weather-app" target="_blank">Open-source code</a>, by Siobhán Johnson
+    </div>  
   </form>
     <script src="app/index.js"></script>
   </body>
