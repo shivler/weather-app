@@ -106,7 +106,8 @@ function cityName(city) {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let inputCity = document.querySelector("#city-input");
-  city.innerHTML = `${inputCity.value}`;
+  city.innerHTML = `${inputCity.value.trim()}`;
+  inputCity.value = "";
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.innerHTML}&appid=${apiKey}&units=metric`;
   // let apiKey = "7a61f64o797dc034b4acb4tb4adb6e7e";
