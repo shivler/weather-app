@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let today = new Date(timestamp);
+  let today = new Date(timestamp * 1000);
   let hour = today.getHours();
   let minute = today.getMinutes();
   if (minute < 10) {
@@ -17,29 +17,15 @@ function formatDate(timestamp) {
   ];
   let day = days[today.getDay()];
   let dayTime = document.querySelector("#date");
-  dayTime.innerHTML = `${day} ${hour}:${minute}`;
+  dayTime.innerHTML = `Last updated:<br /> ${day} ${hour}:${minute}`;
 }
 
 function showDay(timestamp) {
-  let today = new Date(timestamp);
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[today.getDay()];
-
-  let tomorrow = document.querySelector("#tomorrowTitle");
-  let secondDay = document.querySelector("#twoDayTitle");
-  let thirdDay = document.querySelector("#threeDayTitle");
-  let fourthDay = document.querySelector("#fourDayTitle");
-  let fifthDay = document.querySelector("#fiveDayTitle");
-  tomorrow.innerHTML = `${day}`;
+  return days[day];
 }
 
 function displayForecast(response) {
@@ -66,45 +52,53 @@ function displayForecast(response) {
   let fiveDaysMax = document.querySelector("#dayFiveMax");
   let fiveDaysMin = document.querySelector("#dayFiveMin");
 
-  tomorrowHeading.innerHTML = showDay(response.data.list[0].dt * 1000);
-  secondHeading = showDay(response.data.list[1].dt * 1000);
-  thirdHeading = showDay(response.data.list[2].dt * 1000);
-  fourthHeading = showDay(response.data.list[3].dt * 1000);
-  fifthHeading = showDay(response.data.list[4].dt * 1000);
+  tomorrowHeading.innerHTML = showDay(response.data.daily[1].time);
+  secondHeading.innerHTML = showDay(response.data.daily[2].time);
+  thirdHeading.innerHTML = showDay(response.data.daily[3].time);
+  fourthHeading.innerHTML = showDay(response.data.daily[4].time);
+  fifthHeading.innerHTML = showDay(response.data.daily[5].time);
 
   tomorrowIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@2x.png`
+    `${response.data.daily[0].condition.icon_url}`
   );
   twoDayIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@2x.png`
+    `${response.data.daily[1].condition.icon_url}`
   );
   threeDayIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@2x.png`
+    `${response.data.daily[2].condition.icon_url}`
   );
   fourDayIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@2x.png`
+    `${response.data.daily[3].condition.icon_url}`
   );
   fiveDayIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.list[4].weather[0].icon}@2x.png`
+    `${response.data.daily[4].condition.icon_url}`
   );
 
-  tomorrowMax.innerHTML = Math.round(response.data.list[0].main.temp_max) + "°";
-  tomorrowMin.innerHTML = Math.round(response.data.list[0].main.temp_min) + "°";
-  twoDaysMax.innerHTML = Math.round(response.data.list[1].main.temp_max) + "°";
-  twoDaysMin.innerHTML = Math.round(response.data.list[1].main.temp_min) + "°";
+  tomorrowMax.innerHTML =
+    Math.round(response.data.daily[0].temperature.maximum) + "°";
+  tomorrowMin.innerHTML =
+    Math.round(response.data.daily[0].temperature.minimum) + "°";
+  twoDaysMax.innerHTML =
+    Math.round(response.data.daily[1].temperature.maximum) + "°";
+  twoDaysMin.innerHTML =
+    Math.round(response.data.daily[1].temperature.minimum) + "°";
   threeDaysMax.innerHTML =
-    Math.round(response.data.list[2].main.temp_max) + "°";
+    Math.round(response.data.daily[2].temperature.maximum) + "°";
   threeDaysMin.innerHTML =
-    Math.round(response.data.list[2].main.temp_min) + "°";
-  fourDaysMax.innerHTML = Math.round(response.data.list[3].main.temp_max) + "°";
-  fourDaysMin.innerHTML = Math.round(response.data.list[3].main.temp_min) + "°";
-  fiveDaysMax.innerHTML = Math.round(response.data.list[4].main.temp_max) + "°";
-  fiveDaysMin.innerHTML = Math.round(response.data.list[4].main.temp_min) + "°";
+    Math.round(response.data.daily[2].temperature.minimum) + "°";
+  fourDaysMax.innerHTML =
+    Math.round(response.data.daily[3].temperature.maximum) + "°";
+  fourDaysMin.innerHTML =
+    Math.round(response.data.daily[3].temperature.minimum) + "°";
+  fiveDaysMax.innerHTML =
+    Math.round(response.data.daily[4].temperature.maximum) + "°";
+  fiveDaysMin.innerHTML =
+    Math.round(response.data.daily[4].temperature.minimum) + "°";
 }
 
 function cityName(city) {
@@ -159,7 +153,7 @@ function locationStats(response) {
   // weatherDescription.innerHTML = `${response.data.condition.description}`;
   // celsiusTemperature = `${response.data.temperature.current}`;
   // iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
-  formatDate(response.data.dt * 1000);
+  formatDate(response.data.dt);
   getForecast(response.data.coord);
 }
 
@@ -197,8 +191,8 @@ let celsiusTemperature = null;
 function getForecast(coordinates) {
   let longitude = coordinates.lon;
   let latitude = coordinates.lat;
-  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let apiKey = "7a61f64o797dc034b4acb4tb4adb6e7e";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 

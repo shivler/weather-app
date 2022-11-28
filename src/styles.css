@@ -35,6 +35,9 @@ form {
 h1 {
   color: #6c757d;
 }
+#date {
+  font-size: 20px;
+}
 
 h3 {
   padding-bottom: 10px;
