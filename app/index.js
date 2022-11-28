@@ -149,7 +149,7 @@ function locationStats(response) {
   celsiusTemperature = `${response.data.main.temp}`;
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   // weatherDescription.innerHTML = `${response.data.condition.description}`;
   // celsiusTemperature = `${response.data.temperature.current}`;
