@@ -171,6 +171,7 @@ function locationStats(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  iconElement.setAttribute("alt", `${response.data.weather[0].description}`);
   // weatherDescription.innerHTML = `${response.data.condition.description}`;
   // celsiusTemperature = `${response.data.temperature.current}`;
   // iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
