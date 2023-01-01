@@ -60,45 +60,45 @@ function displayForecast(response) {
 
   tomorrowIcon.setAttribute(
     "src",
-    `${response.data.daily[0].condition.icon_url}`
+    `${response.data.daily[1].condition.icon_url}`
   );
   twoDayIcon.setAttribute(
     "src",
-    `${response.data.daily[1].condition.icon_url}`
+    `${response.data.daily[2].condition.icon_url}`
   );
   threeDayIcon.setAttribute(
     "src",
-    `${response.data.daily[2].condition.icon_url}`
+    `${response.data.daily[3].condition.icon_url}`
   );
   fourDayIcon.setAttribute(
     "src",
-    `${response.data.daily[3].condition.icon_url}`
+    `${response.data.daily[4].condition.icon_url}`
   );
   fiveDayIcon.setAttribute(
     "src",
-    `${response.data.daily[4].condition.icon_url}`
+    `${response.data.daily[5].condition.icon_url}`
   );
 
   tomorrowMax.innerHTML =
-    Math.round(response.data.daily[0].temperature.maximum) + "°";
-  tomorrowMin.innerHTML =
-    Math.round(response.data.daily[0].temperature.minimum) + "°";
-  twoDaysMax.innerHTML =
     Math.round(response.data.daily[1].temperature.maximum) + "°";
-  twoDaysMin.innerHTML =
+  tomorrowMin.innerHTML =
     Math.round(response.data.daily[1].temperature.minimum) + "°";
-  threeDaysMax.innerHTML =
+  twoDaysMax.innerHTML =
     Math.round(response.data.daily[2].temperature.maximum) + "°";
-  threeDaysMin.innerHTML =
+  twoDaysMin.innerHTML =
     Math.round(response.data.daily[2].temperature.minimum) + "°";
-  fourDaysMax.innerHTML =
+  threeDaysMax.innerHTML =
     Math.round(response.data.daily[3].temperature.maximum) + "°";
-  fourDaysMin.innerHTML =
+  threeDaysMin.innerHTML =
     Math.round(response.data.daily[3].temperature.minimum) + "°";
-  fiveDaysMax.innerHTML =
+  fourDaysMax.innerHTML =
     Math.round(response.data.daily[4].temperature.maximum) + "°";
-  fiveDaysMin.innerHTML =
+  fourDaysMin.innerHTML =
     Math.round(response.data.daily[4].temperature.minimum) + "°";
+  fiveDaysMax.innerHTML =
+    Math.round(response.data.daily[5].temperature.maximum) + "°";
+  fiveDaysMin.innerHTML =
+    Math.round(response.data.daily[5].temperature.minimum) + "°";
 }
 
 function cityName(city) {
