@@ -62,21 +62,41 @@ function displayForecast(response) {
     "src",
     `${response.data.daily[1].condition.icon_url}`
   );
+  tomorrowIcon.setAttribute(
+    "alt",
+    `${response.data.daily[1].condition.description}`
+  );
   twoDayIcon.setAttribute(
     "src",
     `${response.data.daily[2].condition.icon_url}`
+  );
+  twoDayIcon.setAttribute(
+    "alt",
+    `${response.data.daily[2].condition.description}`
   );
   threeDayIcon.setAttribute(
     "src",
     `${response.data.daily[3].condition.icon_url}`
   );
+  threeDayIcon.setAttribute(
+    "alt",
+    `${response.data.daily[3].condition.description}`
+  );
   fourDayIcon.setAttribute(
     "src",
     `${response.data.daily[4].condition.icon_url}`
   );
+  fourDayIcon.setAttribute(
+    "alt",
+    `${response.data.daily[4].condition.description}`
+  );
   fiveDayIcon.setAttribute(
     "src",
     `${response.data.daily[5].condition.icon_url}`
+  );
+  fiveDayIcon.setAttribute(
+    "alt",
+    `${response.data.daily[5].condition.description}`
   );
 
   tomorrowMax.innerHTML =
